@@ -38,11 +38,12 @@ int main()
         printf("\nChoose an operation:\n");
         printf("1. Insert a new patient\n");
         printf("2. Delete a patient\n");
-        printf("3. Search for a patient\n");
-        printf("4. Display all patients\n");
-        printf("5. Enter the Serial of patients\n");
-        printf("6. Add or Remove Medicines from the storage\n");
-        printf("7. Exit\n");
+        printf("3. Total number of registered patient\n");
+        printf("4. Search for a patient\n");
+        printf("5. Display all patients\n");
+        printf("6. Enter the Serial of patients\n");
+        printf("7. Add or Remove Medicines from the storage\n");
+        printf("8. Exit\n");
         printf("Enter your choice: ");
         scanf("%d", &choice);
 
@@ -56,25 +57,28 @@ int main()
                 display();
                 break;
             case 3:
-                srch();
+                printf("\nTotal Number of patients is: %d\n", countNodes());
                 break;
             case 4:
-                display();
+                srch();
                 break;
             case 5:
-                serial();
+                display();
                 break;
             case 6:
-                medicine();
+                serial();
                 break;
             case 7:
+                medicine();
+                break;
+            case 8:
                 printf("Exiting program.\n");
                 break;
             default:
                 printf("Invalid choice. Please try again.\n");
                 break;
         }
-    } while (choice != 7);
+    } while (choice != 8);
 }
 void createnode(int n){
     ptnt *newptnt;
@@ -379,9 +383,10 @@ void displayqueue()
     else {
         printf("\nPatients in the queue:\n");
         while (current != NULL) {
-            printf("Unique ID: %d, Name: %s\n", current->unqid, current->name);
+            printf("Unique ID: %d, Name: %s --> ", current->unqid, current->name);
             current = current->next;
         }
+        printf("\n");
     }
 }
 
